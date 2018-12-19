@@ -9,7 +9,7 @@ from subprocess import run
 from beets.plugins import BeetsPlugin
 
 
-class MyPlugin(BeetsPlugin):
+class SynoindexPlugin(BeetsPlugin):
     def __init__(self):
         super().__init__()
         self.register_listener('item_copied', self.index_item)

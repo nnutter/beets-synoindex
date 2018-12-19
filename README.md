@@ -1,4 +1,4 @@
-# beetsplug-synoupdate
+# beets-synoindex
 
 Updates the Synology (music) index whenever the beets library is changed.
 
