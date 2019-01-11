@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
+
 """Updates the Synology (music) index whenever the beets library is changed.
 
 This assumes beets is being run on Synology DiskStation Manager so synoindex is
-available.
+available.  Besides enabling the plugin no configuration is needed.
 """
 
 from subprocess import run
@@ -19,7 +21,11 @@ class SynoindexPlugin(BeetsPlugin):
         self.register_listener('item_hardlinked', self.index_copy)
 
     def index_copy(self, item, source, destination):
+        """Notify synoindex of a new music file to index.
+        """
         run(['synoindex', '-R', 'music', '-a', destination])
 
     def index_move(self, item, source, destination):
+        """Notify synoindex that a music file was renamed.
+        """
         run(['synoindex', '-R', 'music', '-n', destination, source])
